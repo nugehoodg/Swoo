@@ -35,11 +35,13 @@ Download the APK and install it on your Android phone.
 ## 📱 Screenshots
 
 <p align="center">
-  <img src="screenshots/ss1.png" width="250" />
-  <img src="screenshots/ss2.png" width="250" />
-  <img src="screenshots/ss3.png" width="250" />
-  <img src="screenshots/ss4.png" width="250" />
+  <img src="screenshots/screenshot_01.png" width="250" />
+    <img src="screenshots/screenshot_02.png" width="250" />
+    <img src="screenshots/screenshot_03.png" width="250" />
+    <img src="screenshots/screenshot_04.png" width="250" />
+    <img src="screenshots/screenshot_05.png" width="250" />
 </p>
+
 ---
 
 ## ✨ Features
