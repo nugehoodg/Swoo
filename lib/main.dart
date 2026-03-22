@@ -22,7 +22,7 @@ class PeriodTrackerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Period Tracker',
+      title: 'Swoo',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.themeData,
       home: const MainNavigation(),
