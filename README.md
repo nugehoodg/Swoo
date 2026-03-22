@@ -1,17 +1,96 @@
-# period_tracker
+<h1 align="center">Swoo</h1>
 
-A new Flutter project.
+<p align="center">
+🌸 Private Period Tracking App for Android 🌸
+</p>
 
-## Getting Started
+<p align="center">
+  <img src="screenshots/banner.png" width="800" />
+</p>
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+## 🌸 Swoo
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+**Swoo** is a simple and private period tracking app.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+No account needed. No ads. No tracking.
+
+Your personal data stays on your phone — not on the internet.
+
+Safe, simple, and made for everyone.
+
+---
+
+## 📥 Download
+
+👉 Get the latest version here:
+
+➡️ https://github.com/yourusername/swoo/releases
+
+Download the APK and install it on your Android phone.
+
+---
+
+## 📱 Screenshots
+
+<p align="center">
+  <img src="screenshots/home.png" width="250" />
+  <img src="screenshots/calendar.png" width="250" />
+  <img src="screenshots/log.png" width="250" />
+</p>
+
+<p align="center">
+  <img src="screenshots/statistics.png" width="250" />
+  <img src="screenshots/settings.png" width="250" />
+</p>
+
+---
+
+## ✨ Features
+
+🌸 Track menstrual cycle  
+📅 Predict upcoming periods  
+📝 Log symptoms and notes  
+📊 View cycle history  
+🎨 Clean and simple design  
+📴 Works offline  
+⚡ Lightweight and fast
+
+---
+
+## 🔒 Privacy First
+
+Swoo respects your privacy.
+
+❌ No account  
+❌ No ads  
+❌ No tracking  
+❌ No data collection  
+❌ No internet required
+
+Your data stays with you.
+
+---
+
+## ❤️ Why Swoo?
+
+Many apps collect personal information.
+
+**Swoo does not.**
+
+Made for people who want a simple and trustworthy period tracker.
+
+---
+
+## 🌍 Open Source
+
+Anyone can view the code and help improve the app.
+
+If you like Swoo, consider giving this repository a ⭐
+
+---
+
+🌸 Simple
+🔒 Private
+📱 Yours
