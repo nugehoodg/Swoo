@@ -75,136 +75,153 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     return Stack(
+      fit: StackFit.expand,
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 20),
-              Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(32),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 48,
-                    horizontal: 24,
-                  ),
-                  child: Column(
-                    children: [
-                      Text(
-                        isActive
-                            ? 'Days left before period stopped'
-                            : 'Days until next period',
-                        style: Theme.of(context).textTheme.titleMedium
-                            ?.copyWith(
-                              color: AppTheme.textDark.withOpacity(0.6),
-                              fontWeight: FontWeight.w600,
-                            ),
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        displayValue >= 0 ? displayValue.toString() : '--',
-                        style: Theme.of(context).textTheme.displayLarge
-                            ?.copyWith(
-                              fontSize: 100,
-                              fontWeight: FontWeight.w800,
-                              color: AppTheme.primaryPink,
-                              height: 1.0,
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: 24),
-              Container(
-                padding: const EdgeInsets.symmetric(vertical: 20),
-                decoration: BoxDecoration(
-                  color: statusColor,
-                  borderRadius: BorderRadius.circular(24),
-                ),
-                child: Center(
-                  child: Text(
-                    statusText,
-                    style: TextStyle(
-                      color: statusTextColor,
-                      fontWeight: FontWeight.w800,
-                      letterSpacing: 1.2,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 24),
-              Container(
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: AppTheme.surfaceWhite,
-                  borderRadius: BorderRadius.circular(24),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-                      blurRadius: 10,
-                      offset: const Offset(0, 4),
-                    ),
-                  ],
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24.0,
+                  vertical: 12.0,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Text(
-                      'How are you feeling today?',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: AppTheme.textDark.withOpacity(0.8),
-                        fontSize: 16,
+                    const SizedBox(height: 20),
+                    Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(32),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 48,
+                          horizontal: 24,
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              isActive
+                                  ? 'Days left before period stopped'
+                                  : 'Days until next period',
+                              style: Theme.of(context).textTheme.titleMedium
+                                  ?.copyWith(
+                                    color: AppTheme.textDark.withOpacity(0.6),
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                            ),
+                            const SizedBox(height: 16),
+                            Text(
+                              displayValue >= 0
+                                  ? displayValue.toString()
+                                  : '--',
+                              style: Theme.of(context).textTheme.displayLarge
+                                  ?.copyWith(
+                                    fontSize: 100,
+                                    fontWeight: FontWeight.w800,
+                                    color: AppTheme.primaryPink,
+                                    height: 1.0,
+                                  ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 16),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: SymptomsBottomSheet.availableSymptoms.map((
-                        symptom,
-                      ) {
-                        final isSelected = provider
-                            .getSymptoms(today)
-                            .contains(symptom);
-                        return FilterChip(
-                          label: Text(symptom),
-                          labelStyle: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: isSelected
-                                ? Colors.white
-                                : AppTheme.textDark,
-                            fontSize: 12,
+                    const SizedBox(height: 24),
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: 20),
+                      decoration: BoxDecoration(
+                        color: statusColor,
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      child: Center(
+                        child: Text(
+                          statusText,
+                          style: TextStyle(
+                            color: statusTextColor,
+                            fontWeight: FontWeight.w800,
+                            letterSpacing: 1.2,
+                            fontSize: 18,
                           ),
-                          backgroundColor: AppTheme.backgroundPeach,
-                          selectedColor: AppTheme.primaryPink,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                            side: BorderSide(
-                              color: isSelected
-                                  ? Colors.transparent
-                                  : AppTheme.primaryPink.withOpacity(0.5),
-                              width: 1,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: AppTheme.surfaceWhite,
+                        borderRadius: BorderRadius.circular(24),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.05),
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Text(
+                            'How are you feeling today?',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: AppTheme.textDark.withOpacity(0.8),
+                              fontSize: 16,
                             ),
                           ),
-                          showCheckmark: false,
-                          selected: isSelected,
-                          onSelected: (_) {
-                            provider.toggleSymptom(today, symptom);
-                          },
-                        );
-                      }).toList(),
+                          const SizedBox(height: 16),
+                          Wrap(
+                            spacing: 8,
+                            runSpacing: 8,
+                            children: SymptomsBottomSheet.availableSymptoms.map(
+                              (symptom) {
+                                final isSelected = provider
+                                    .getSymptoms(today)
+                                    .contains(symptom);
+                                return FilterChip(
+                                  label: Text(symptom),
+                                  labelStyle: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: isSelected
+                                        ? Colors.white
+                                        : AppTheme.textDark,
+                                    fontSize: 12,
+                                  ),
+                                  backgroundColor: AppTheme.backgroundPeach,
+                                  selectedColor: AppTheme.primaryPink,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20),
+                                    side: BorderSide(
+                                      color: isSelected
+                                          ? Colors.transparent
+                                          : AppTheme.primaryPink.withOpacity(
+                                              0.5,
+                                            ),
+                                      width: 1,
+                                    ),
+                                  ),
+                                  showCheckmark: false,
+                                  selected: isSelected,
+                                  onSelected: (_) {
+                                    provider.toggleSymptom(today, symptom);
+                                  },
+                                );
+                              },
+                            ).toList(),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
-              const Spacer(),
-              ElevatedButton.icon(
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(24, 0, 24, 10),
+              child: ElevatedButton.icon(
                 onPressed: () {
                   if (isActive) {
                     provider.logPeriodEnd(DateTime.now());
@@ -247,9 +264,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       : AppTheme.primaryPink,
                 ),
               ),
-              const SizedBox(height: 32),
-            ],
-          ),
+            ),
+          ],
         ),
         Align(
           alignment: Alignment.topCenter,
