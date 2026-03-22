@@ -5,6 +5,9 @@ class AppTheme {
   // Feminine color palette
   static const Color primaryPink = Color(0xFFF06292); // Pink 300
   static const Color secondaryLavender = Color(0xFFBA68C8); // Purple 300
+  static const Color follicularBlue = Color(0xFFB3E5FC);
+  static const Color ovulationGold = Color(0xFFFFB74D);
+  static const Color lutealYellow = Color(0xFFFFF59D);
   static const Color backgroundPeach = Color(0xFFFCE4EC); // Pink 50 (warm background)
   static const Color surfaceWhite = Color(0xFFFFFFFF);
   static const Color textDark = Color(0xFF424242); // Grey 800

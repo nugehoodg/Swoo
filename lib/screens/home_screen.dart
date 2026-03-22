@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:confetti/confetti.dart';
 import '../providers/tracker_provider.dart';
 import '../core/theme/app_theme.dart';
+import '../models/cycle_phase.dart';
+import '../widgets/symptoms_bottom_sheet.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,24 +33,45 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final provider = context.watch<TrackerProvider>();
-    final daysUntil = provider.getDaysUntilNextPeriod();
     final today = DateTime.now();
-    final isFertile = provider.isFertileDay(today);
-    final isPeriod = provider.isPeriodDay(today);
+    final phase = provider.getPhaseForDay(today);
     final isActive = provider.isPeriodActive;
+    final displayValue = isActive
+        ? provider.getDaysUntilPeriodEnd()
+        : provider.getDaysUntilNextPeriod();
 
     String statusText = 'Normal Day';
     Color statusColor = AppTheme.textDark.withOpacity(0.1);
     Color statusTextColor = AppTheme.textDark;
 
-    if (isPeriod) {
-      statusText = 'Period Week';
-      statusColor = AppTheme.primaryPink.withOpacity(0.15);
-      statusTextColor = AppTheme.primaryPink;
-    } else if (isFertile) {
-      statusText = 'Fertile Window';
-      statusColor = AppTheme.secondaryLavender.withOpacity(0.15);
-      statusTextColor = AppTheme.secondaryLavender;
+    switch (phase) {
+      case CyclePhase.period:
+        statusText = 'Period Phase';
+        statusColor = AppTheme.primaryPink.withOpacity(0.15);
+        statusTextColor = AppTheme.primaryPink;
+        break;
+      case CyclePhase.follicular:
+        statusText = 'Follicular Phase';
+        statusColor = AppTheme.follicularBlue.withOpacity(0.3);
+        statusTextColor = const Color(0xFF0277BD);
+        break;
+      case CyclePhase.fertile:
+        statusText = 'Fertile Window';
+        statusColor = AppTheme.secondaryLavender.withOpacity(0.15);
+        statusTextColor = AppTheme.secondaryLavender;
+        break;
+      case CyclePhase.ovulation:
+        statusText = 'Ovulation Day';
+        statusColor = AppTheme.ovulationGold.withOpacity(0.3);
+        statusTextColor = const Color(0xFFE65100);
+        break;
+      case CyclePhase.luteal:
+        statusText = 'Luteal Phase';
+        statusColor = AppTheme.lutealYellow.withOpacity(0.5);
+        statusTextColor = const Color(0xFFF57F17);
+        break;
+      default:
+        break;
     }
 
     return Stack(
@@ -71,7 +94,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       Text(
-                        'Days until next period',
+                        isActive
+                            ? 'Days left before period stopped'
+                            : 'Days until next period',
                         style: Theme.of(context).textTheme.titleMedium
                             ?.copyWith(
                               color: AppTheme.textDark.withOpacity(0.6),
@@ -80,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(height: 16),
                       Text(
-                        daysUntil >= 0 ? daysUntil.toString() : '--',
+                        displayValue >= 0 ? displayValue.toString() : '--',
                         style: Theme.of(context).textTheme.displayLarge
                             ?.copyWith(
                               fontSize: 100,
@@ -110,6 +135,72 @@ class _HomeScreenState extends State<HomeScreen> {
                       fontSize: 18,
                     ),
                   ),
+                ),
+              ),
+              const SizedBox(height: 24),
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: AppTheme.surfaceWhite,
+                  borderRadius: BorderRadius.circular(24),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.05),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      'How are you feeling today?',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: AppTheme.textDark.withOpacity(0.8),
+                        fontSize: 16,
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: SymptomsBottomSheet.availableSymptoms.map((
+                        symptom,
+                      ) {
+                        final isSelected = provider
+                            .getSymptoms(today)
+                            .contains(symptom);
+                        return FilterChip(
+                          label: Text(symptom),
+                          labelStyle: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: isSelected
+                                ? Colors.white
+                                : AppTheme.textDark,
+                            fontSize: 12,
+                          ),
+                          backgroundColor: AppTheme.backgroundPeach,
+                          selectedColor: AppTheme.primaryPink,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            side: BorderSide(
+                              color: isSelected
+                                  ? Colors.transparent
+                                  : AppTheme.primaryPink.withOpacity(0.5),
+                              width: 1,
+                            ),
+                          ),
+                          showCheckmark: false,
+                          selected: isSelected,
+                          onSelected: (_) {
+                            provider.toggleSymptom(today, symptom);
+                          },
+                        );
+                      }).toList(),
+                    ),
+                  ],
                 ),
               ),
               const Spacer(),
