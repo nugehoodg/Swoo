@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  <img src="screenshots/banner.png" width="800" />
+  <img src="screenshots/banner.png" width="250" />
 </p>
 
 ---
@@ -26,7 +26,7 @@ Safe, simple, and made for everyone.
 
 👉 Get the latest version here:
 
-➡️ https://github.com/yourusername/swoo/releases
+➡️ https://github.com/nugehoodg/Swoo/releases
 
 Download the APK and install it on your Android phone.
 
@@ -35,9 +35,9 @@ Download the APK and install it on your Android phone.
 ## 📱 Screenshots
 
 <p align="center">
-  <img src="screenshots/home.png" width="250" />
-  <img src="screenshots/calendar.png" width="250" />
-  <img src="screenshots/log.png" width="250" />
+  <img src="screenshots/ss1.png" width="250" />
+  <img src="screenshots/ss1.png" width="250" />
+  <img src="screenshots/ss1.png" width="250" />
 </p>
 
 <p align="center">
