@@ -36,15 +36,10 @@ Download the APK and install it on your Android phone.
 
 <p align="center">
   <img src="screenshots/ss1.png" width="250" />
-  <img src="screenshots/ss1.png" width="250" />
-  <img src="screenshots/ss1.png" width="250" />
+  <img src="screenshots/ss2.png" width="250" />
+  <img src="screenshots/ss3.png" width="250" />
+  <img src="screenshots/ss4.png" width="250" />
 </p>
-
-<p align="center">
-  <img src="screenshots/statistics.png" width="250" />
-  <img src="screenshots/settings.png" width="250" />
-</p>
-
 ---
 
 ## ✨ Features
